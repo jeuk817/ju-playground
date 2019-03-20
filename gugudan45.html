@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>구구단45</title>
+</head>
+<body>
+    출력할 단: <input type="text" id="num">
+    <button onclick="display()">확인</button>
+    <script>
+        function display(){
+            var strN = document.getElementById('num').value;
+            var n = Number(strN);
+            if (n < 2 || n > 9){
+                alert("2이상, 9이하의 값만 입력할 수 있습니다.")
+                window.location.reload();
+            } else {
+                document.write("<h1>구구단 " + n + "단 구현</h1>");
+                for(var i = 1; i < 10; i++){
+                    document.write(n + " * " + i + " = "+ (n * i) + "<br>");
+                }
+            }
+        }
+    </script>
+        <input type="button" value="페이지 새로 고침" onClick="window.location.reload()">
+</body>
+</html>
