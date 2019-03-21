@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>소수구하기</title>
+</head>
+<body>
+    <script>
+        var numbers = {};
+        numbers.all = [];
+        numbers.prime = [];
+        numbers.isPrime = function(){
+            for(var i = 0; i < this.all.length; i++){
+                for(var j = 2; j <= (this.all.length-1)/2; j++){
+                    if(this.all[i]%j === 0){
+                        this.prime.push(this.all[i]);
+                        break;
+                    } 
+                }
+            }
+        }
+
+        numbers.getAllPrime = function(){
+            for(var i = 0; i < this.prime.length; i++){
+                document.write(this.prime[i] + "<br>");
+            }
+        }
+
+        numbers.addAll = function(max_num){
+            for(var i = 2; i <= max_num; i++){
+                this.all.push(i);
+            }
+        }
+
+        numbers.addAll(10000);
+        numbers.isPrime();
+        numbers.getAllPrime();
+    </script>
+</body>
+</html>
