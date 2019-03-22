@@ -17,8 +17,15 @@
             return n2;
         }
         var getOperator = function() {
-            var op = prompt("연산자를 입력하세요('='을 입력하면 종료).");
-            return op;
+            while(true){
+                var op = prompt("연산자를 입력하세요('='을 입력하면 종료).");
+                if (op != "+" && op != "-" && op != "*" && op != "/" && op != "=") {
+                    alert("잘못된 연산자 입니다.");
+                    continue;
+                } else {
+                    return op;
+                }
+            }
         }
 
         var calculrator = function(n1, n2, op) {
@@ -46,9 +53,6 @@
                 if (op === "=") {
                     print(result);
                     break;
-                } else if (op != "+" && op != "-" && op != "*" && op != "/") {
-                    alert("잘못된 연산자 입니다.");
-                    continue;
                 }
                 var n2 = getNextValue(n);
                 result = calculrator(result, n2, op);
