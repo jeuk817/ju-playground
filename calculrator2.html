@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>문자열 계산기 구현하기</h1>
+    <div>
+        첫번째 수 : <input type="text" id="n1"><br>
+        두번째 수 : <input type="text" id="n2"><br>
+        <button onclick="calc()">실행</button>
+    </div>
+    <div id="output">결과</div>
+    <script>
+        var calc = function(){
+            var str1 = document.getElementById('n1').value;
+            var str2 = document.getElementById('n2').value;
+            var n1 = Number(str1);
+            var n2 = Number(str2);
+
+            var str = "";
+            str += n1 + " + " + n2 + " = " + (n1 + n2) + "<br>";
+            str += n1 + " - " + n2 + " = " + (n1 - n2) + "<br>";
+            str += n1 + " * " + n2 + " = " + (n1 * n2) + "<br>";
+            str += n1 + " / " + n2 + " = " + (n1 / n2) + "<br>";
+            
+            var out = document.getElementById('output');
+            out.innerHTML = str;
+        }
+    </script>
+</body>
+</html>
