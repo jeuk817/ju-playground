@@ -7,35 +7,29 @@
     <title>Document</title>
 </head>
 <body>
+    <h2>계산기 구현하기</h2>
     <script>
-        var calculrator = function(){
-            var total = 0;
-            var n1 = Number(prompt("숫자를 입력해 주세요."));
-            total = n1;
-            while(n2 != "="){
-                var n2 = prompt("연산자를 입력해 주세요(=을 입력하면 종료).");
-                if (n2 === "="){
-                    return total;
-                    break;
-                } else {
-                    var n1 = Number(prompt("숫자를 입력해 주세요."));
-                    switch(n2){
-                        case "+":
-                        total += n1;
-                        case "-":
-                        total -= n1;
-                        case "*":
-                        total = total*n1;
-                        case "/":
-                        total = total/n1;
-                    }
-                }
-            }
+        var calculrator = function(num1, num2){
+            var ret = [4];
+            ret[0] = num1 + num2;
+            ret[1] = num1 - num2;
+            ret[2] = num1 * num2;
+            ret[3] = num1 / num2;
+            return ret;
+        }
+        
+        var print = function(n1, n2, ret){
+            document.write(n1 + " + " + n2 + " = " + ret[0] + "<br>");
+            document.write(n1 + " - " + n2 + " = " + ret[1] + "<br>");
+            document.write(n1 + " * " + n2 + " = " + ret[2] + "<br>");
+            document.write(n1 + " / " + n2 + " = " + ret[3] + "<br>");
         }
 
-        var main = function(){
-            calculrator();
-            document.write(calculrator());
+        function main(){
+            var num1 = Number(prompt("숫자1을 입력하세요."));
+            var num2 = Number(prompt("숫자2을 입력하세요."));
+            var ret = calculrator(num1, num2);
+            print(num1, num2, ret);
         }
         main();
     </script>
