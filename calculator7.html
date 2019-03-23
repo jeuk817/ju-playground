@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>문자열 계산기</h1>
+    <div>
+            식 : <input type="text" id="eq"><br>
+            <button id="eq" onclick="main()">실행</button>
+    </div>
+    <div id="output">결과</div>
+    <script>
+        var input ={};
+        input.equality = function () {
+            var eq = document.getElementById('eq').value;
+            var eqArr = eq.split("");
+            var arr = [];
+            var n = "";
+            for (var i = 0; i < eqArr.length; i++){
+                if (eqArr[i] === "+" || eqArr[i] === "-" || eqArr[i] === "*" || eqArr[i] === "/"){
+                    arr.push(n);
+                    arr.push(eqArr[i]);
+                    var n = "";
+                } else if (i === eqArr.length -1) {
+                    n += eqArr[i];
+                    arr.push(n);
+                } else {
+                    n += eqArr[i];
+                }
+            }
+            return arr;
+        };
+
+        var calculrator = {};
+        calculrator.calc = function (ret) {
+            var result = Number(ret[0]);
+            for (var i = 1; i < ret.length; i++) {
+                if (ret[i] === "+") {
+                    result += Number(ret[i+1]);
+                    i++;
+                } else if (ret[i] === "-") {
+                    result -= Number(ret[i+1]);
+                    i++;
+                } else if (ret[i] === "*") {
+                    result *= Number(ret[i+1]);
+                    i++;
+                } else if (ret[i] === "/") {
+                    result /= Number(ret[i+1]);
+                    i++;
+                } else {
+                    alert('수식을 잘못 입력하셨습니다.');
+                    return "결과값이 없습니다."
+                }
+            }
+            return result;
+        };
+        var output = {};
+        output.print = function (res) {
+            var eq = document.getElementById('eq').value;
+            return eq + " = " + res;
+        };
+
+        function main() {
+            var str = document.getElementById('output');
+            var arr = input.equality();
+            var res = calculrator.calc(arr);
+            var out = output.print(res);
+            str.innerHTML = out;
+        }
+    </script>
+</body>
+</html>
