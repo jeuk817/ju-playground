@@ -26,8 +26,8 @@ output.arr1 = function(){
     return arr;
 }
 
-var calculrator = {};
-calculrator.calc = function (ret) {
+var calculator = {};
+calculator.calc = function (ret) {
     var result = Number(ret[0]);
     for (var i = 1; i < ret.length; i++) {
         if (ret[i] === "+") {
@@ -49,9 +49,9 @@ calculrator.calc = function (ret) {
     }
     return result;
 };
-calculrator.result = function() {
+calculator.result = function() {
     var arr = output.arr1();
-    var res = calculrator.calc(arr);
+    var res = calculator.calc(arr);
     return res;
 }
 
@@ -70,24 +70,21 @@ var clickNumbers = function(event){
             input.array.pop();
             input.array.push(str);
         } else {
-            var res = calculrator.result();
-            output.text2.value = res;
+            output.text2.value = calculator.result();
             input.array.push(str);
         }
 
     } else if(str === "=") {
         if (last === "+" || last === "-" || last === "*" || last === "/") {
             input.array.pop();
-            var res = calculrator.result();
-            output.text2.value = res;
+            output.text2.value = calculator.result();
         } else {
-            var res = calculrator.result();
-            output.text2.value = res;
+            output.text2.value = calculator.result();
         }
 
     } else {
         input.array.push(str);
     }
-    
+
     output.text1.innerHTML = input.getInput();
 };
