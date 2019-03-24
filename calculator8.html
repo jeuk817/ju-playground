@@ -13,6 +13,15 @@
                 font-family: courier;
                 font-size: 20px;
                 color: white;
+                text-align: right;
+            }
+            #output1 {
+                width: 480px;
+                text-align: right;
+                font-family: courier;
+                font-size: 15px;
+                color: black;
+                text-align: right;
             }
             button {
                 font-size: 20px;
@@ -26,7 +35,8 @@
 <body>
     <h1>문자열 계산기</h1>
     <div>
-            식 : <input type="text" id="output"><br>
+            <div id="output1"></div>
+            <input type="text" id="output"><br>
             <button id="7" onclick="clickNumbers(event)">7</button>
             <button id="8" onclick="clickNumbers(event)">8</button>
             <button id="9" onclick="clickNumbers(event)">9</button>
@@ -41,7 +51,7 @@
             <button id="sub" onclick="clickNumbers(event)">-</button><br>
             <button id="cl" onclick="clickNumbers(event)">C</button>
             <button id="0" onclick="clickNumbers(event)">0</button>
-            <button id="bs" onclick="main()">=</button>
+            <button id="bs" onclick="clickNumbers(event)">=</button>
             <button id="pls" onclick="clickNumbers(event)">+</button><br>
     </div>
     <script src='calc_gui.js'></script>
