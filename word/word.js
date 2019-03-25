@@ -3,6 +3,7 @@ var word1 = document.getElementById('word1'); // answer
 var word2 = document.getElementById('word2'); // buttons
 var check = document.getElementById('check'); //word1 === word2?
 var progress = document.getElementById('progress'); //progress check
+var time = document.getElementById('time'); //progress check
 
 // game objects
 var game = {
@@ -11,6 +12,9 @@ var game = {
     'current': 0
 
 };
+
+game.startTime = Date.now();
+
 game.words = 'apple,linux,javascript,tutorial,girlfriend,ryujeuk,baby,gamemaster'.split(',');
 
 //choose 1 word from words;
@@ -101,7 +105,9 @@ game.progress = function () {
     }
 
     if(this.current == this.maxPlay) {
-        alert('Good! Thank you for playing')
+        var sec = (Date.now() - this.startTime) /1000;
+        alert('Thank you for playing!\n Your Record: ' + sec + " sec");
+        clearInterval(x);
     }
 }
 
@@ -128,17 +134,17 @@ game.shuffle = function () {
         game.swap();
     }
 
-    var n = Math.floor(Math.random() * game.answer.length - 1);
+    var rmax = Math.max(this.answer.length - 2, 1);
+    var n = Math.floor(Math.random() * rmax) + 1;
     for (var i = 0; i < n; i++) {
         game.rshift();
     }
 };
 game.shuffle();
 
-// next game
+var updateTime = function() {
+    var now = Date.now() - game.startTime;
+    time.innerHTML = ((now / 1000) + "s");
+};
 
-
-// if (complete) {
-//     game.choice();
-//     circle.innerHTML = "O";
-// }
+var x = setInterval(updateTime, 50);
